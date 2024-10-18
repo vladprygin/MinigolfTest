@@ -52,10 +52,13 @@ public class LevelController : MonoBehaviour
         _levelGO.SetActive(false);
     }
     
-    private void Awake()
+    private void Start()
     {
         _curLevelHole.OnBallInsideEvent += OnBallInsideEventHandler;
-        Hub.Instance.LevelsManager.OnBallHitEvent += OnBallHitEventHandler;
+        if ( Hub.Instance.LevelsManager != null )
+        {
+            Hub.Instance.LevelsManager.OnBallHitEvent += OnBallHitEventHandler;
+        }
     }
 
     private void OnDestroy()
@@ -82,6 +85,7 @@ public class LevelController : MonoBehaviour
     private void OnBallInsideEventHandler()
     {
         Hub.Instance.LevelsManager.OnLevelCompletedEvent?.Invoke(_levelData, CalculateStars(_levelData, _attemptsCount));
+        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.LevelComplete);
     }
 
     private void OnBallHitEventHandler()

@@ -29,6 +29,11 @@ public class LevelsManager : MonoBehaviour, IManager
         {
             level.TryLoadLevel(levelIndex);
         }
+
+        Hub.Instance.GameStateManager.SetGameState(levelIndex != _mainMenuIndex
+            ? GameStateEnum.Game
+            : GameStateEnum.MainMenu);
+        
         _currentLevelIndex = levelIndex;
     }
 

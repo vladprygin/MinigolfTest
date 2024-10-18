@@ -43,6 +43,7 @@ public class PauseMenuPanelController : PanelUIController
     {
         Hub.Instance.LevelsManager.OnBallHitEvent?.Invoke();
         Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
+        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.Game);
     }
     
     private void OnSettingsButtonClicked()

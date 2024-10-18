@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        var currentState = Hub.Instance.GameStateManager.GetCurrentGameState();
+        if ( currentState!= GameStateEnum.Game)
+        {
+            return;
+        }
+        
         CheckPlayerInput();
         UpdatePowerIndicator();
     }
