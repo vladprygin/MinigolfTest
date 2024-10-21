@@ -13,27 +13,13 @@ public class GameMenuController : PanelUIController
     public override void Init()
     {
         base.Init();
-        SubscribeToEvents();
         SetupButtons();
     }
 
     public override void Release()
     {
         base.Release();
-        UnsubscribeFromEvents();
         ReleaseButtons();
-    }
-
-    private void SubscribeToEvents()
-    {
-        Hub.Instance.LevelsManager.OnLevelLoadedEvent += OnLevelLoaded;
-        Hub.Instance.LevelsManager.OnBallHitConfirmedEvent += OnBallHit;
-    }
-
-    private void UnsubscribeFromEvents()
-    {
-        Hub.Instance.LevelsManager.OnLevelLoadedEvent -= OnLevelLoaded;
-        Hub.Instance.LevelsManager.OnBallHitConfirmedEvent -= OnBallHit;
     }
 
     private void SetupButtons()
@@ -59,7 +45,7 @@ public class GameMenuController : PanelUIController
 
     private void OnPauseButtonClicked()
     {
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.Pause);
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.PauseMenuPanel);
+        Hub.GameStateManager.SetGameState(GameStateEnum.Pause);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.PauseMenuPanel);
     }
 }

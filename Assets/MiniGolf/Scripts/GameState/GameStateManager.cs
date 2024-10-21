@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GameStateManager : MonoBehaviour, IManager
+public class GameStateManager : IManager
 {
     private GameStateEnum _currentGameState;
     
@@ -17,11 +17,11 @@ public class GameStateManager : MonoBehaviour, IManager
 
     public void Init()
     {
-        
+        SetGameState(GameStateEnum.MainMenu);
     }
 
     public void Release()
     {
-        
+        SetGameState(GameStateEnum.MainMenu);
     }
 }

@@ -25,12 +25,12 @@ public class ResultsMenuPanel : PanelUIController
 
     private void SubscribeToEvents()
     {
-        Hub.Instance.LevelsManager.OnLevelCompletedEvent += OnLevelCompletedEventHandler;
+        Hub.LevelsManager.OnLevelCompletedEvent += OnLevelCompletedEventHandler;
     }
 
     private void UnsubscribeFromEvents()
     {
-        Hub.Instance.LevelsManager.OnLevelCompletedEvent -= OnLevelCompletedEventHandler;
+        Hub.LevelsManager.OnLevelCompletedEvent -= OnLevelCompletedEventHandler;
     }
 
     private void SetupButtons()
@@ -45,21 +45,21 @@ public class ResultsMenuPanel : PanelUIController
         _restartButton.onClick.RemoveListener(OnRestartButtonClicked);
     }
 
-    private void OnLevelCompletedEventHandler(LevelData levelData, int stars)
+    private void OnLevelCompletedEventHandler(int stars)
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.ResultsPanel);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.ResultsPanel);
         _starsText.text = string.Format(_starsTextFormat, stars);
     }
 
     private void OnRestartButtonClicked()
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
-        Hub.Instance.LevelsManager.ResetCurrentLevel();
+        Hub.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
+        Hub.LevelsManager.ResetCurrentLevel();
     }
 
     private void OnMainMenuButtonClicked()
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.MainMenuPanel);
-        Hub.Instance.LevelsManager.LoadMainMenu();
+        Hub.UIManager.OpenSection(ScreenTypeEnum.MainMenuPanel);
+        Hub.LevelsManager.LoadMainMenu();
     }
 }

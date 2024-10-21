@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class UIManager : MonoBehaviour, IManager
+public class UIManager : IManager
 {
-    [SerializeField] private PanelUIController[] _screenPanels;
-    [SerializeField] private ConfirmationPanelController _confirmationPanel;
+    private PanelUIController[] _screenPanels;
+    private ConfirmationPanelController _confirmationPanel;
     
     public void Init()
     {

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Levels
+  m_EditorClassIdentifier: 
+  m_GroupName: Levels
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bbfcceed29bd65d428ae170f80706ba8
+  m_SerializeEntries:
+  - m_GUID: 9916c25b65d408f4c8fdb7300561105c
+    m_Address: Assets/MiniGolfAssets/Levels/Prefabs/Level1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6f2719b3772074418176d788c26644c
+    m_Address: Assets/MiniGolfAssets/Levels/Prefabs/Level2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bb7421b17ae02e48a8e522164dedd52
+    m_Address: Assets/MiniGolfAssets/Levels/Prefabs/LevelsContainer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7650e4f4518fc54ebc2f03a29d3c709
+    m_Address: Assets/MiniGolfAssets/Levels/Prefabs/MainMenuLevel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: dbba7dee3063a7447aef425253693043, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2a59c3991329cda45be820e1e843e6dd, type: 2}
+    - {fileID: 11400000, guid: 65d1b828717dc9547a969f275e5b9a36, type: 2}

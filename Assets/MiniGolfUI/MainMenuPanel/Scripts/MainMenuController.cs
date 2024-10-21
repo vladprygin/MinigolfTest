@@ -35,12 +35,12 @@ public class MainMenuPanelController : PanelUIController
 
     private void OnStartGameButtonClicked()
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.LevelSelectionPanel);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.LevelSelectionPanel);
     }
 
     private void OnQuitGameButtonClicked()
     {
-        Hub.Instance.UIManager.OpenConfirmationPanel(_quitGameConfirmationTitle,
+        Hub.UIManager.OpenConfirmationPanel(_quitGameConfirmationTitle,
             OnQuitGameConfirmed,
             OnQuitGameCanceled);
     }
@@ -52,6 +52,6 @@ public class MainMenuPanelController : PanelUIController
 
     private void OnQuitGameCanceled()
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.MainMenuPanel);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.MainMenuPanel);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -37,14 +38,12 @@ public class LevelController : MonoBehaviour
         _ballTransform.position = _initialBallPosition.position;
         _ballTransform.rotation = _initialBallPosition.rotation;
         _attemptsCount = 0;
-        Hub.Instance.LevelsManager.OnLevelLoadedEvent?.Invoke(_levelData);
     }
 
     private void LoadLevel()
     {
         _levelGO.SetActive(true);
         TryResetLevel(_levelData.ID);
-        Hub.Instance.LevelsManager.OnLevelLoadedEvent?.Invoke(_levelData);
     }
 
     private void UnloadLevel()
@@ -55,42 +54,24 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         _curLevelHole.OnBallInsideEvent += OnBallInsideEventHandler;
-        if ( Hub.Instance.LevelsManager != null )
-        {
-            Hub.Instance.LevelsManager.OnBallHitEvent += OnBallHitEventHandler;
-        }
     }
 
     private void OnDestroy()
     {
         _curLevelHole.OnBallInsideEvent -= OnBallInsideEventHandler;
-        Hub.Instance.LevelsManager.OnBallHitEvent -= OnBallHitEventHandler;
     }
     
-    private int CalculateStars(LevelData levelData, int hits)
-    {
-        if ( hits <= levelData.StarsThreshold[0] )
-        {
-            return 3;
-        }
 
-        if ( hits <= levelData.StarsThreshold[1] )
-        {
-            return 2;
-        }
-        
-        return 1;
-    }
 
     private void OnBallInsideEventHandler()
     {
-        Hub.Instance.LevelsManager.OnLevelCompletedEvent?.Invoke(_levelData, CalculateStars(_levelData, _attemptsCount));
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.LevelComplete);
+        Hub.LevelsManager.CompleteLevel(_levelData, _attemptsCount);
+        Hub.GameStateManager.SetGameState(GameStateEnum.LevelComplete);
     }
 
     private void OnBallHitEventHandler()
     {
         _attemptsCount++;
-        Hub.Instance.LevelsManager.OnBallHitConfirmedEvent.Invoke(_attemptsCount);
+        //Hub.LevelsManager.BallHitConfirmed(_attemptsCount);
     }
 }

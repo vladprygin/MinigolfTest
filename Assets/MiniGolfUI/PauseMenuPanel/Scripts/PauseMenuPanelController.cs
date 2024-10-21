@@ -37,45 +37,43 @@ public class PauseMenuPanelController : PanelUIController
         _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
         _resetLevelButton.onClick.RemoveListener(OnResetLevelButtonClicked);
     }
-    
 
     private void OnResumeButtonClicked()
     {
-        Hub.Instance.LevelsManager.OnBallHitEvent?.Invoke();
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.Game);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
+        Hub.GameStateManager.SetGameState(GameStateEnum.Game);
     }
     
     private void OnSettingsButtonClicked()
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.SettingsPanel);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.SettingsPanel);
     }
 
     private void OnMainMenuButtonClicked()
     {
-        Hub.Instance.UIManager.OpenConfirmationPanel(_mainMenuConfirmationTitle,
+        Hub.UIManager.OpenConfirmationPanel(_mainMenuConfirmationTitle,
             OnMainMenuConfirmed,
             OnMainMenuCanceled);
     }
 
     private void OnMainMenuConfirmed()
     {
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.MainMenu);
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.MainMenuPanel);
-        Hub.Instance.LevelsManager.LoadMainMenu();;
+        Hub.GameStateManager.SetGameState(GameStateEnum.MainMenu);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.MainMenuPanel);
+        Hub.LevelsManager.LoadMainMenu();;
     }
 
     private void OnMainMenuCanceled()
     {
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.Pause);
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.PauseMenuPanel);
+        Hub.GameStateManager.SetGameState(GameStateEnum.Pause);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.PauseMenuPanel);
     }
 
     private void OnResetLevelButtonClicked()
     {
-        Hub.Instance.LevelsManager.ResetCurrentLevel();
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.Game);
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
+        Hub.LevelsManager.ResetCurrentLevel();
+        Hub.GameStateManager.SetGameState(GameStateEnum.Game);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
     }
 
 }

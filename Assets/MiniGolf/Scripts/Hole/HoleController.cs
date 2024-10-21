@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class HoleController : MonoBehaviour
 {
-    public Action OnBallInsideEvent;
+    private Action _onBallInsideEvent;
     [SerializeField] private string _ballTag;
     [SerializeField] private ColliderEventsProvider _ballColliderEventProvider;
-
+    
+    public event Action OnBallInsideEvent
+    {
+        add => _onBallInsideEvent+=value;
+        remove => _onBallInsideEvent -= value;
+    }
+    
     private void Awake()
     {
         _ballColliderEventProvider.OnTriggerEnterEvent += OnBallHitTriggerEventHandler;
@@ -19,6 +25,6 @@ public class HoleController : MonoBehaviour
 
     private void OnBallHitTriggerEventHandler(Collider other)
     {
-        OnBallInsideEvent?.Invoke();
+        _onBallInsideEvent?.Invoke();
     }
 }

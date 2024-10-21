@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        var currentState = Hub.Instance.GameStateManager.GetCurrentGameState();
+        var currentState = Hub.GameStateManager.GetCurrentGameState();
         if ( currentState!= GameStateEnum.Game)
         {
             return;
@@ -72,8 +72,7 @@ public class PlayerController : MonoBehaviour
                 _currentBall.SetBallDirection(dir.normalized, power);
                 _isPreparingShot = false;
                 _currentBall = null;
-                Hub.Instance.LevelsManager.OnBallHitEvent?.Invoke();
-                
+                Hub.BallManager.BallHitConfirmed();
                 _powerIndicator.HideLineRenderer();
             } 
         }

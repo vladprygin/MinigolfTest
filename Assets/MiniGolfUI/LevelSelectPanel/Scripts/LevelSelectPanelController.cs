@@ -15,9 +15,9 @@ public class LevelSelectPanelController : PanelUIController
 
     private void SetLevelDatas()
     {
-        if ( Hub.Instance.LevelsManager != null )
+        if ( Hub.LevelsManager != null )
         {
-            _levelDatas = Hub.Instance.LevelsManager.GetLevelDatas();
+            _levelDatas = Hub.LevelsManager.GetLevelDatas();
         }
     }
 
@@ -87,7 +87,7 @@ public class LevelSelectPanelController : PanelUIController
 
     private void OnStartGameButtonClicked()
     {
-        Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
-        Hub.Instance.LevelsManager.LoadLevel(_levelDatas[_curLevelIndex].ID);
+        Hub.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
+        Hub.LevelsManager.LoadLevel(_levelDatas[_curLevelIndex].ID);
     }
 }

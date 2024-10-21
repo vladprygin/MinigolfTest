@@ -7,7 +7,16 @@ public class LevelData
     [SerializeField] private int _parNumber;
 
     [SerializeField] private int[] _starsThreshold;
+    [SerializeField] private string _levelName;
 
+    public LevelData(int id, int parNumber, int[] starsThreshold, string levelName)
+    {
+        _id = id;
+        _parNumber = parNumber;
+        _starsThreshold = starsThreshold;
+        _levelName = levelName;
+    }
+    
     public int ID => _id;
     
     public int ParNumber => _parNumber;
