@@ -74,7 +74,7 @@ public class PauseMenuPanelController : PanelUIController
     private void OnResetLevelButtonClicked()
     {
         Hub.Instance.LevelsManager.ResetCurrentLevel();
-        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.MainMenu);
+        Hub.Instance.GameStateManager.SetGameState(GameStateEnum.Game);
         Hub.Instance.UIManager.OpenSection(ScreenTypeEnum.GameMenuPanel);
     }
 
